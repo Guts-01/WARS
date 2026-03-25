@@ -23,84 +23,58 @@
             font-family: 'Oswald', sans-serif;
             background-image: 
                 linear-gradient(rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.98)),
-                url('https://www.transparenttextures.com/patterns/dark-dot-grid.png'); /* Textura de grade sutil */
+                url('https://www.transparenttextures.com/patterns/dark-dot-grid.png');
+            overflow-x: hidden;
         }
 
-        /* Efeito de Neon nos Títulos */
         .neon-text {
             color: #fff;
-            text-shadow: 
-                0 0 5px rgba(74, 222, 128, 0.7),
-                0 0 10px rgba(74, 222, 128, 0.5),
-                2px 2px 0px rgba(0,0,0,0.8); /* Sombra tática dura */
+            text-shadow: 0 0 5px rgba(74, 222, 128, 0.7), 0 0 10px rgba(74, 222, 128, 0.5), 2px 2px 0px rgba(0,0,0,0.8);
         }
 
-        /* Hero Background com Parallax Sutil */
         .hero-gradient { 
-            background: 
-                linear-gradient(rgba(17, 17, 17, 0.7), var(--dark-gray)), 
+            background: linear-gradient(rgba(17, 17, 17, 0.7), var(--dark-gray)), 
                 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1920'); 
             background-size: cover; 
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* Botão Tático Militar (Verde Escuro) */
         .btn-military {
             background-color: var(--military-green);
             color: white;
             border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .btn-military:hover {
             border-color: var(--neon-green);
             box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
-            transform: translateY(-2px);
         }
 
-        /* Animação de Pulso Neon para Botões Especiais */
         @keyframes neonPulse {
-            0% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.4); }
+            0%, 100% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.4); }
             50% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.7); }
-            100% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.4); }
         }
 
-        .btn-discord {
-            background-color: #5865F2;
-            animation: neonPulse 2s infinite;
-        }
-        .btn-whatsapp {
-            background-color: #25D366;
-            animation: neonPulse 2s infinite ease-in-out;
-        }
+        .btn-discord { background-color: #5865F2; animation: neonPulse 2s infinite; }
+        .btn-whatsapp { background-color: #25D366; animation: neonPulse 2s infinite ease-in-out; }
 
-        /* Card de Arma com Brilho no Hover */
         .weapon-card {
-            background-color: rgba(31, 41, 55, 0.5); /* Semitransparente */
+            background-color: rgba(31, 41, 55, 0.5);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(75, 85, 99, 0.3);
-            transition: all 0.3s ease;
         }
 
-        .weapon-card:hover {
-            border-color: var(--neon-green);
-            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
-            transform: scale(1.02);
-        }
-
-        /* Cantos Decorativos de HUD */
-        .hud-corner {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border-color: var(--military-green);
-        }
+        .hud-corner { position: absolute; width: 15px; height: 15px; border-color: var(--military-green); }
         .hud-tl { top: 10px; left: 10px; border-top-width: 2px; border-left-width: 2px; }
         .hud-br { bottom: 10px; right: 10px; border-bottom-width: 2px; border-right-width: 2px; }
 
+        /* Estilo Scanline para o Crachá */
+        .scanline {
+            background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
+            background-size: 100% 2px, 3px 100%;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -128,7 +102,7 @@
             <p class="text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-light tracking-wide">
                 Esquadrão WARS: Onde a tática militar encontra a eficiência tecnológica.
             </p>
-            <a href="#contato" class="btn-military px-10 py-4 rounded-none font-bold text-lg uppercase tracking-widest hover:bg-[#1a2e24]">
+            <a href="#contato" class="btn-military px-6 py-4 rounded-none font-bold text-lg uppercase tracking-widest hover:bg-[#1a2e24]">
                 ALISTAR-SE AGORA
             </a>
         </div>
@@ -314,7 +288,7 @@
                     </button>
                 </div>
 
-                <div id="badgeContainer" class="bg-[#0a0a0a] border-2 border-gray-800 p-6 inline-block min-w-[320px] transition-all duration-700 relative overflow-hidden">
+                <div id="badgeContainer" class="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
                     <div class="absolute inset-0 pointer-events-none opacity-5 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
                     
                     <p class="text-gray-600 text-[9px] font-mono mb-3 text-left tracking-[0.2em]">SYSTEM_AUTH // STATUS: VERIFIED</p>
