@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WARS - CoD Warzone Tactical Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --dark-gray: #111111;
+            --military-green: #2d4739;
+            --neon-green: #4ade80;
+        }
+
+        body { 
+            background-color: var(--dark-gray); 
+            color: #e5e7eb; 
+            font-family: 'Oswald', sans-serif;
+            background-image: 
+                linear-gradient(rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.98)),
+                url('https://www.transparenttextures.com/patterns/dark-dot-grid.png'); /* Textura de grade sutil */
+        }
+
+        /* Efeito de Neon nos Títulos */
+        .neon-text {
+            color: #fff;
+            text-shadow: 
+                0 0 5px rgba(74, 222, 128, 0.7),
+                0 0 10px rgba(74, 222, 128, 0.5),
+                2px 2px 0px rgba(0,0,0,0.8); /* Sombra tática dura */
+        }
+
+        /* Hero Background com Parallax Sutil */
+        .hero-gradient { 
+            background: 
+                linear-gradient(rgba(17, 17, 17, 0.7), var(--dark-gray)), 
+                url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1920'); 
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Botão Tático Militar (Verde Escuro) */
+        .btn-military {
+            background-color: var(--military-green);
+            color: white;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-military:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Animação de Pulso Neon para Botões Especiais */
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.7); }
+            100% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.4); }
+        }
+
+        .btn-discord {
+            background-color: #5865F2;
+            animation: neonPulse 2s infinite;
+        }
+        .btn-whatsapp {
+            background-color: #25D366;
+            animation: neonPulse 2s infinite ease-in-out;
+        }
+
+        /* Card de Arma com Brilho no Hover */
+        .weapon-card {
+            background-color: rgba(31, 41, 55, 0.5); /* Semitransparente */
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .weapon-card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+            transform: scale(1.02);
+        }
+
+        /* Cantos Decorativos de HUD */
+        .hud-corner {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-color: var(--military-green);
+        }
+        .hud-tl { top: 10px; left: 10px; border-top-width: 2px; border-left-width: 2px; }
+        .hud-br { bottom: 10px; right: 10px; border-bottom-width: 2px; border-right-width: 2px; }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="sticky top-0 z-50 bg-[#121212] bg-opacity-90 border-b border-gray-800 backdrop-blur-sm p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-4xl font-bold tracking-tighter neon-text">WARS</h1>
+            <div class="hidden md:flex space-x-6 font-medium uppercase text-sm tracking-wider">
+                <a href="#home" class="hover:text-war-green hover:text-[#4ade80] transition duration-300">Home</a>
+                <a href="#sobre" class="hover:text-war-green hover:text-[#4ade80] transition duration-300">Sobre Nós</a>
+                <a href="#metas" class="hover:text-war-green hover:text-[#4ade80] transition duration-300">Meta Tático</a>
+                <a href="#contato" class="hover:text-war-green hover:text-[#4ade80] transition duration-300">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-gradient h-screen flex items-center justify-center text-center px-4">
+        <div class="relative p-12 bg-black bg-opacity-40 rounded-lg">
+            <div class="hud-corner hud-tl"></div>
+            <div class="hud-corner hud-br"></div>
+            
+            <h2 class="text-6xl md:text-8xl font-bold mb-4 uppercase tracking-tight neon-text">
+                Tropa da <span class="text-[#4ade80]">Wars</span>
+            </h2>
+            <p class="text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-light tracking-wide">
+                Esquadrão WARS: Onde a tática militar encontra a eficiência tecnológica.
+            </p>
+            <a href="#contato" class="btn-military px-10 py-4 rounded-none font-bold text-lg uppercase tracking-widest hover:bg-[#1a2e24]">
+                ALISTAR-SE AGORA
+            </a>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 bg-[#1a1a1a] relative">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-5xl font-bold mb-8 neon-text uppercase tracking-tight border-l-4 border-[#2d4739] pl-4">DOSSIÊ DO CLÃ</h2>
+                <div class="space-y-4 text-gray-400 text-lg leading-relaxed font-light">
+                    <p><strong class="text-white">STATUS:</strong> ATIVO</p>
+                    <p><strong class="text-white">MISSÃO:</strong> Dominação tática e evolução constante.</p>
+                    <p>
+                        O grupo **WARS** é uma unidade de elite focada em operações de alto nível no Call of Duty. Combinamos a disciplina militar de comunicação e rotação com a análise de dados do "meta" tecnológico.
+                    </p>
+                </div>
+            </div>
+            <div class="relative bg-gray-900 h-80 rounded-sm flex items-center justify-center border border-gray-800 shadow-xl overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#2d4739] to-transparent opacity-10 group-hover:opacity-20 translate-y-[-100%] group-hover:translate-y-[100%] transition-all duration-[2s] ease-linear"></div>
+                <i class="fas fa-satellite-dish text-8xl text-[#2d4739] group-hover:text-[#4ade80] transition-colors duration-500"></i>
+                <div class="absolute bottom-2 right-2 text-xs font-mono text-gray-600">UNIT_ID: WARS_OP01</div>
+            </div>
+        </div>
+    </section>
+
+<section id="metas" class="py-24 bg-[#121212]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold neon-text uppercase tracking-tight">META DE ARMAS <span class="text-[#4ade80]">SEMANAL</span></h2>
+                <div class="h-1 w-32 bg-war-green mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="weapon-card rounded-none overflow-hidden relative group border border-gray-800">
+                    <div class="overflow-hidden h-52">
+                        <img src="/armas/voyak.jpg" alt="Voyak KT-3" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6 bg-[#1a1a1a]">
+                        <h3 class="text-2xl font-bold mb-2 uppercase text-white">Voyak KT-3</h3>
+                        <p class="text-xs text-[#4ade80] mb-4 font-mono uppercase tracking-widest">[ FUZIS DE ASSALTO ]</p>
+                        <ul class="text-sm space-y-1 text-gray-400 font-light border-t border-gray-800 pt-4">
+                            <li><span class="text-gray-500">•</span> Boca: <span class="text-gray-200">Supressor Monolitico</span></li>
+                            <li><span class="text-gray-500">•</span> Cano: <span class="text-gray-200">LTI Grav-4 17,6"</span></li>
+                            <li><span class="text-gray-500">•</span> Lente: <span class="text-gray-200">ELO HoverPoint FANG</span></li>
+                            <li><span class="text-gray-500">•</span> Carregador: <span class="text-gray-200">Tambor SK-Garrison</span></li>
+                            <li><span class="text-gray-500">•</span> Coronha: <span class="text-gray-200">V-Last Control</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="weapon-card rounded-none overflow-hidden relative group border border-gray-800">
+                    <div class="overflow-hidden h-52">
+                        <img src="/armas/razor.jpg" alt="Razor 9MM" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6 bg-[#1a1a1a]">
+                        <h3 class="text-2xl font-bold mb-2 uppercase text-white">Razor 9MM</h3>
+                        <p class="text-xs text-[#4ade80] mb-4 font-mono uppercase tracking-widest">[ SUBMETRALHADORA ]</p>
+                        <ul class="text-sm space-y-1 text-gray-400 font-light border-t border-gray-800 pt-4">
+                            <li><span class="text-gray-500">•</span> Cano: <span class="text-gray-200">Cano MFS Sldewinder 12"</span></li>
+                            <li><span class="text-gray-500">•</span> Boca: <span class="text-gray-200">Compensador H-9 mm</span></li>
+                            <li><span class="text-gray-500">•</span> Carregador: <span class="text-gray-200">Zealot II Estendido</span></li>
+                            <li><span class="text-gray-500">•</span> Lente: <span class="text-gray-200">Ferramentas Letais ELO</span></li>
+                            <li><span class="text-gray-500">•</span> Cabo: <span class="text-gray-200">Microdot Recovery</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="weapon-card rounded-none overflow-hidden relative group border border-gray-800">
+                    <div class="overflow-hidden h-52">
+                        <img src="/armas/hawker.jpg" alt="Hawker HX" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6 bg-[#1a1a1a]">
+                        <h3 class="text-2xl font-bold mb-2 uppercase text-white">Hawker HX</h3>
+                        <p class="text-xs text-[#4ade80] mb-4 font-mono uppercase tracking-widest">[ FUZIL DE PRECISÃO ]</p>
+                        <ul class="text-sm space-y-1 text-gray-400 font-light border-t border-gray-800 pt-4">
+                            <li><span class="text-gray-500">•</span> Boca: <span class="text-gray-200">Supressor Monolitico</span></li>
+                            <li><span class="text-gray-500">•</span> Carregador: <span class="text-gray-200">Flatload Velocity</span></li>
+                            <li><span class="text-gray-500">•</span> Cano: <span class="text-gray-200">Compósite-11 23,7"</span></li>
+                            <li><span class="text-gray-500">•</span> Cabo: <span class="text-gray-200">Auroral Light Grip</span></li>
+                            <li><span class="text-gray-500">•</span> Munição: <span class="text-gray-200">.338 LM Pressurizada</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-[#1a1a1a] border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center relative p-12 bg-black bg-opacity-20 border border-gray-800">
+             <div class="hud-corner hud-tl border-[#4ade80]"></div>
+            <div class="hud-corner hud-br border-[#4ade80]"></div>
+
+            <h2 class="text-5xl font-bold mb-6 neon-text uppercase tracking-tight">CANAIS DE COMANDO</h2>
+            <p class="mb-12 text-xl text-gray-400 font-light">Estabeleça conexão com o QG através das plataformas abaixo.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                <a href="https://discord.gg/2SQXZ4rWfJ" class="btn-discord flex items-center space-x-3 text-white px-12 py-5 rounded-none font-bold text-lg uppercase tracking-widest shadow-xl transition transform hover:scale-105 hover:border-white border border-transparent">
+                    <i class="fab fa-discord text-2xl"></i>
+                    <span>DISCORD QG</span>
+                </a>
+                
+                <a href="https://chat.whatsapp.com/ESy2rdve8kT4kdmFO4oUp5" class="btn-whatsapp flex items-center space-x-3 text-white px-12 py-5 rounded-none font-bold text-lg uppercase tracking-widest shadow-xl transition transform hover:scale-105 hover:border-white border border-transparent">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span>WHATSAPP OPS</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="regras" class="py-24 bg-[#111111] relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold neon-text uppercase tracking-tight">Protocolos de Conduta</h2>
+                <p class="text-war-green font-mono text-sm mt-2 tracking-[0.3em] opacity-80">// DIRETRIZES OPERACIONAIS DO CLÃ WARS</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="bg-[#1a1a1a] border-l-4 border-war-green p-6 hover:bg-[#222] transition group relative">
+                    <div class="absolute top-2 right-4 text-gray-800 font-bold text-4xl group-hover:text-war-green opacity-20 transition">01</div>
+                    <h3 class="text-[#4ade80] font-bold mb-2 flex items-center">
+                        <span class="mr-2">1️⃣</span> RESPEITO TOTAL
+                    </h3>
+                    <p class="text-gray-400 text-sm">Respeito acima de tudo com todos os operadores do esquadrão.</p>
+                </div>
+
+                <div class="bg-[#1a1a1a] border-l-4 border-war-green p-6 hover:bg-[#222] transition group relative">
+                    <div class="absolute top-2 right-4 text-gray-800 font-bold text-4xl group-hover:text-war-green opacity-20 transition">02</div>
+                    <h3 class="text-[#4ade80] font-bold mb-2 flex items-center">
+                        <span class="mr-2">2️⃣</span> ATIVIDADE CONSTANTE
+                    </h3>
+                    <p class="text-gray-400 text-sm">O soldado que não entra em campo é esquecido. Mantenha-se ativo.</p>
+                </div>
+
+                <div class="bg-[#1a1a1a] border-l-4 border-war-green p-6 hover:bg-[#222] transition group relative">
+                    <div class="absolute top-2 right-4 text-gray-800 font-bold text-4xl group-hover:text-war-green opacity-20 transition">03</div>
+                    <h3 class="text-[#4ade80] font-bold mb-2 flex items-center">
+                        <span class="mr-2">3️⃣</span> UNIÃO TÁTICA
+                    </h3>
+                    <p class="text-gray-400 text-sm">União e companheirismo. Ninguém fica para trás.</p>
+                </div>
+
+                <div class="bg-[#1a1a1a] border-l-4 border-war-green p-6 hover:bg-[#222] transition group relative">
+                    <div class="absolute top-2 right-4 text-gray-800 font-bold text-4xl group-hover:text-war-green opacity-20 transition">04</div>
+                    <h3 class="text-[#4ade80] font-bold mb-2 flex items-center">
+                        <span class="mr-2">4️⃣</span> HIERARQUIA ADM
+                    </h3>
+                    <p class="text-gray-400 text-sm">As ordens dos ADMs visam o bem comum do grupo. Respeite as decisões.</p>
+                </div>
+
+                <div class="bg-[#1a1a1a] border-l-4 border-red-900 p-6 hover:bg-[#222] transition group relative">
+                    <div class="absolute top-2 right-4 text-gray-800 font-bold text-4xl group-hover:text-red-900 opacity-20 transition">05</div>
+                    <h3 class="text-red-500 font-bold mb-2 flex items-center">
+                        <span class="mr-2">5️⃣</span> ESTILO DE JOGO
+                    </h3>
+                    <p class="text-gray-400 text-sm">Proibido opinar na forma do outro jogar. Cada operador tem sua técnica.</p>
+                </div>
+
+                <div class="bg-[#1a1a1a] border-l-4 border-red-900 p-6 hover:bg-[#222] transition group relative">
+                    <div class="absolute top-2 right-4 text-gray-800 font-bold text-4xl group-hover:text-red-900 opacity-20 transition">06</div>
+                    <h3 class="text-red-500 font-bold mb-2 flex items-center">
+                        <span class="mr-2">6️⃣</span> FOGO AMIGO (BRIGAS)
+                    </h3>
+                    <p class="text-gray-400 text-sm">Conflitos internos resultam em expulsão imediata. Proibido brigas.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 max-w-2xl mx-auto bg-war-green bg-opacity-10 border border-war-green p-8 text-center relative">
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-war-green px-4 py-1 text-xs font-bold text-white tracking-widest uppercase">
+                    Requisito de Alistamento
+                </div>
+                
+                <h3 class="text-2xl font-bold text-white mb-4 uppercase">7️⃣ Identificação de Combate</h3>
+                <p class="text-[#4ade80] text-sm font-mono mb-6 uppercase opacity-80 italic">!! É OBRIGATÓRIO INSERIR A INSÍGNIA DO CLÃ [WARS]</p>
+                <p class="text-[#4ade80] text-sm font-mono mb-6 uppercase opacity-80 italic">*é apenas uma simulação de como seu nome ficará exibido no COD </p>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+                    <input type="text" id="inputName" placeholder="WARS: SUA_TAG_AQUI" 
+                        class="bg-black border border-gray-700 text-white px-4 py-2 font-mono focus:outline-none focus:border-[#4ade80] transition w-full md:w-64 uppercase placeholder-gray-600">
+                    
+                    <button onclick="updateBadge()" 
+                        class="bg-war-green hover:bg-[#4ade80] text-white px-6 py-2 font-bold transition duration-300 uppercase tracking-tighter shadow-lg active:scale-95">
+                        SINCRONIZAR ID
+                    </button>
+                </div>
+
+                <div id="badgeContainer" class="bg-[#0a0a0a] border-2 border-gray-800 p-6 inline-block min-w-[320px] transition-all duration-700 relative overflow-hidden">
+                    <div class="absolute inset-0 pointer-events-none opacity-5 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
+                    
+                    <p class="text-gray-600 text-[9px] font-mono mb-3 text-left tracking-[0.2em]">SYSTEM_AUTH // STATUS: VERIFIED</p>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span id="finalName" class="font-mono text-2xl md:text-3xl text-white tracking-tighter drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                            [WARS] <span class="text-gray-700">________</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-black text-center text-gray-600 text-sm font-mono border-t border-gray-800">
+        <p class="tracking-wider">&gt;&gt; SISTEMA WARS v1.0 | TRANSMISSÃO ENCERRADA. // 2026</p>
+    </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
