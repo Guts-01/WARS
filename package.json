@@ -1,0 +1,20 @@
+{
+  "name": "wars",
+  "version": "1.0.0",
+  "description": "WARS - CoD Warzone Tactical Group",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static HTML'"
+  },
+  "keywords": [
+    "wars",
+    "cod",
+    "warzone"
+  ],
+  "author": "Guts-01",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
