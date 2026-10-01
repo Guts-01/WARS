@@ -1,37 +1,46 @@
-function updateBadge() {
-        const input = document.getElementById('inputName');
-        const display = document.getElementById('finalName');
-        const container = document.getElementById('badgeContainer');
+const menuButton = document.querySelector('.menu-toggle');
+const navigation = document.querySelector('.site-nav');
+const badgeForm = document.querySelector('#badge-form');
+const playerName = document.querySelector('#player-name');
+const badgeName = document.querySelector('#badge-name');
+const badgePreview = document.querySelector('.badge-preview');
 
-        if (input.value.trim() !== "") {
-            // 1. Atualiza o texto no crachá
-            display.innerHTML = `[WARS] <span class="text-[#4ade80] drop-shadow-[0_0_10px_rgba(74,222,128,0.8)]">${input.value.toUpperCase()}</span>`;
-            
-            // 2. Efeito visual de confirmação no container
-            container.style.borderColor = "#4ade80";
-            container.style.transform = "scale(1.05)";
-            
-            // 3. Volta ao tamanho normal após um breve delay
-            setTimeout(() => {
-                container.style.transform = "scale(1)";
-            }, 200);
+function closeMenu() {
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Abrir menu');
+  navigation.classList.remove('is-open');
+}
 
-            // 4. LIMPA O INPUT (O que você pediu)
-            input.value = "";
-            
-            // 5. Devolve o foco para o input para facilitar se ele quiser digitar outro
-            input.focus();
+menuButton.addEventListener('click', () => {
+  const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+  menuButton.setAttribute('aria-expanded', String(!isOpen));
+  menuButton.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
+  navigation.classList.toggle('is-open', !isOpen);
+});
 
-        } else {
-            // Pequeno feedback de erro caso esteja vazio
-            input.style.borderColor = "#7f1d1d"; // Vermelho escuro
-            setTimeout(() => { input.style.borderColor = "#374151"; }, 1000);
-        }
-    }
+navigation.addEventListener('click', (event) => {
+  if (event.target.closest('a')) closeMenu();
+});
 
-    // Permite apertar "Enter" para atualizar também
-    document.getElementById('inputName').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            updateBadge();
-        }
-    });
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeMenu();
+});
+
+badgeForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const name = playerName.value.trim().replace(/\s+/g, ' ');
+
+  if (!name) {
+    playerName.setCustomValidity('Digite seu nome no jogo.');
+    playerName.reportValidity();
+    return;
+  }
+
+  badgeName.textContent = name.toLocaleUpperCase('pt-BR');
+  badgePreview.classList.add('is-updated');
+  playerName.value = '';
+  playerName.focus();
+});
+
+playerName.addEventListener('input', () => playerName.setCustomValidity(''));
+document.querySelector('#current-year').textContent = new Date().getFullYear();
